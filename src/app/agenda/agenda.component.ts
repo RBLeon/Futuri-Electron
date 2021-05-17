@@ -45,7 +45,7 @@ const colors: any = {
   styleUrls: ['./agenda.component.css']
 })
 export class AgendaComponent {
-  @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
+  @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any> | undefined;
 
   view: CalendarView = CalendarView.Month;
 
@@ -56,7 +56,7 @@ export class AgendaComponent {
   modalData: {
     action: string;
     event: CalendarEvent;
-  };
+  } | undefined;
 
   actions: CalendarEventAction[] = [
     {
