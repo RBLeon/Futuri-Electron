@@ -29,9 +29,17 @@
             ],
             "styles": [
               "node_modules/angular-calendar/css/angular-calendar.css",
+              "node_modules/flatpickr/dist/flatpickr.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/calendar-utils/calendar-utils.js",
+              "node_modules/flatpickr/dist/flatpickr.min.js",
+              "node_modules/calendar-utils/bundles/calendar-utils.umd.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+            ]
           },
           "configurations": {
             "production": {

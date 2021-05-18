@@ -14,6 +14,8 @@ import { BoodschappenComponent } from './boodschappen/boodschappen.component';
 import { VervelingComponent } from './verveling/verveling.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AgendaComponent } from './agenda/agenda.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
@@ -28,6 +30,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     AgendaComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     CommonModule,
