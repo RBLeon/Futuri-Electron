@@ -10,6 +10,7 @@ export class TodolijstComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
