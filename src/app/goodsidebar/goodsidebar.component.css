@@ -51,6 +51,10 @@ body {
   color: #727272;
 }
 
+.sidebar .nav-link.disabled {
+  color:#969696;
+}
+
 .sidebar .nav-link.active {
   color: #ffffff;
 }
