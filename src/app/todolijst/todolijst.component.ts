@@ -11,7 +11,7 @@ export interface todos {
 @Component({
   selector: 'app-todolijst',
   templateUrl: './todolijst.component.html',
-  styleUrls: ['../../../node_modules/simple-keyboard/build/css/index.css','./todolijst.component.css']
+  styleUrls: ['./todolijst.component.css']
 })
 
 export class TodolijstComponent implements OnInit {
