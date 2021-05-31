@@ -68,9 +68,9 @@ export class BoodschappenComponent implements OnInit {
   addTodo() {
     this.boodschappen.push({
       id: this.boodschappen.length+1,
-      title: this.boodschapTitle,
+      title: this.value,
       completed: false,
       editing: false
-    })
+    });
   }
 }

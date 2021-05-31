@@ -116,13 +116,16 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let event of events">
+      <tr *ngFor="let event of events; let i = index" [attr.data-index]="i">
         <td>
           <input
             type="text"
             class="form-control"
             [(ngModel)]="event.title"
             (keyup)="refresh.next()"
+            (input)="onInputChange($event)"
+            (focus)="onInputFocus($event)"
+            value="{{value}}"
           />
         </td>
         <td>
@@ -178,6 +181,7 @@
     </tbody>
   </table>
 </div>
+<div class="keyboard3"></div>
 
 <ng-template #modalContent let-close="close">
   <div class="modal-header">

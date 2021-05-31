@@ -23,6 +23,8 @@ import {
   CalendarView,
 } from 'angular-calendar';
 
+import Keyboard from 'simple-keyboard';
+
 const colors: any = {
   red: {
     primary: '#ad2121',
@@ -129,7 +131,8 @@ export class AgendaComponent {
     this.events = [
       ...this.events,
       {
-        title: 'New event',
+        id: this.events.length+1,
+        title: 'Nieuwe gebeurtenis',
         start: startOfDay(new Date()),
         end: endOfDay(new Date()),
         color: colors.red,
@@ -153,5 +156,81 @@ export class AgendaComponent {
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
   }
+
+  value = "";
+  keyboard3!: Keyboard;
+
+  inputName = "1";
+  inputs = {
+    taak1: "1"
+  };
+
+
+  ngAfterViewInit() {
+    this.keyboard3 = new Keyboard(".keyboard3",{
+      onChange: (input: string) => this.onChange(input),
+      onKeyPress: (button: string) => this.onKeyPress(button),
+      debug: true,
+      inputName: this.inputName,
+      preventMouseDownDefault: true
+    });
+
+    this.keyboard3.replaceInput(this.inputs);
+  }
+
+  onInputFocus = (event: any) => {
+    this.inputName = event.target.id;
+
+    console.log("Focused input", this.inputName);
+
+    this.keyboard3.setOptions({
+      inputName: event.target.id
+    });
+    console.log(event);
+  };
+
+  setInputCaretPosition = (elem: any, pos: number) => {
+    if (elem.setSelectionRange) {
+      elem.focus();
+      elem.setSelectionRange(pos, pos);
+    }
+  };
+
+  onChange = (input: string) => {
+    this.value = input;
+    console.log("Input changed", input);
+
+    let caretPosition = this.keyboard3.caretPosition;
+
+    if (caretPosition !== null)
+      this.setInputCaretPosition(
+        document.querySelector(`#${this.inputName}`),
+        caretPosition
+      );
+  };
+
+
+  onKeyPress = (button: string) => {
+    console.log("Button pressed", button);
+
+    /**
+     * If you want to handle the shift and caps lock buttons
+     */
+    if (button === "{shift}" || button === "{lock}") this.handleShift();
+  };
+
+  onInputChange = (event: any) => {
+    this.keyboard3.setInput(event.target.value, event.target.id);
+  };
+
+  handleShift = () => {
+    let currentLayout = this.keyboard3.options.layoutName;
+    let shiftToggle = currentLayout === "default" ? "shift" : "default";
+
+    this.keyboard3.setOptions({
+      layoutName: shiftToggle
+    });
+  };
+
 }
 

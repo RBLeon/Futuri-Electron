@@ -2,11 +2,12 @@ ul {
   text-align: center;
 }
 
-.simple-keyboard {
+/* .simple-keyboard {
   max-width: 850px;
-}
+} */
 
 .hide-keyboard {
   overflow: hidden;
   height: 0;
 }
+

@@ -16,10 +16,10 @@ export interface todos {
 
 export class TodolijstComponent implements OnInit {
   value = "";
-  keyboard!: Keyboard;
+  keyboard2!: Keyboard;
 
   ngAfterViewInit() {
-    this.keyboard = new Keyboard({
+    this.keyboard2 = new Keyboard(".keyboard2",{
       onChange: (input: string) => this.onChange(input),
       onKeyPress: (button: string) => this.onKeyPress(button)
     });
@@ -40,14 +40,14 @@ export class TodolijstComponent implements OnInit {
   };
 
   onInputChange = (event: any) => {
-    this.keyboard.setInput(event.target.value);
+    this.keyboard2.setInput(event.target.value);
   };
 
   handleShift = () => {
-    let currentLayout = this.keyboard.options.layoutName;
+    let currentLayout = this.keyboard2.options.layoutName;
     let shiftToggle = currentLayout === "default" ? "shift" : "default";
 
-    this.keyboard.setOptions({
+    this.keyboard2.setOptions({
       layoutName: shiftToggle
     });
   };
@@ -68,7 +68,7 @@ export class TodolijstComponent implements OnInit {
   addTodo() {
     this.todos.push({
       id: this.todos.length+1,
-      title: this.todoTitle,
+      title: this.value,
       completed: false,
       editing: false
     })
