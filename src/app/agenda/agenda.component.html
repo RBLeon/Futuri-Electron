@@ -99,6 +99,10 @@
   <button class="btn btn-primary float-right" (click)="addEvent()">
     Voeg nieuw evenement toe
   </button>
+  <button class="btn btn-dark btn-lg btn-block" (click)="keyboard = !keyboard">
+    {{!keyboard ? 'Verberg toetsenbord' : 'Toon toetsenbord'}}
+  </button>
+
   <div class="clearfix"></div>
 </h3>
 
@@ -183,7 +187,6 @@
   </table>
 </div>
 <div [ngClass]="keyboard ? 'hide-keyboard' : ''" class="keyboard3"></div>
-<button class="button" (click)="keyboard = !keyboard">{{!keyboard ? 'Hide keyboard' : 'Show keyboard'}}</button>
 
 <ng-template #modalContent let-close="close">
   <div class="modal-header">

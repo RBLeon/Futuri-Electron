@@ -151,7 +151,6 @@ export class AgendaComponent {
       },
     ];
     this.inputs["key" + this.events.length] = "Nieuwe gebeurtenis"
-    console.log(this.inputs);
   }
 
   deleteEvent(eventToDelete: CalendarEvent) {
@@ -207,12 +206,12 @@ export class AgendaComponent {
     console.log("Input changed", input);
     let caretPosition = this.keyboard3.caretPosition;
     this.focussedInput = document.querySelector(`#${this.inputName}`)
+    this.focussedInput.value = input;
     if (caretPosition !== null)
       this.setInputCaretPosition(
-        document.querySelector(`#${this.inputName}`),
+        this.focussedInput,
         caretPosition
       );
-    this.focussedInput.value = input;
   };
 
 
