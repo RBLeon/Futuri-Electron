@@ -119,6 +119,7 @@
       <tr *ngFor="let event of events; let i = index" [attr.data-index]="i">
         <td>
           <input
+            id="key{{i + 1}}"
             type="text"
             class="form-control"
             [(ngModel)]="event.title"
@@ -138,7 +139,7 @@
         <td>
           <input
             type="color"
-            [(ngModel)]="event.color.secondary"
+            [(ngModel)]="event.color.secondary" 
             (change)="refresh.next()"
           />
         </td>
@@ -181,7 +182,8 @@
     </tbody>
   </table>
 </div>
-<div class="keyboard3"></div>
+<div [ngClass]="keyboard ? 'hide-keyboard' : ''" class="keyboard3"></div>
+<button class="button" (click)="keyboard = !keyboard">{{!keyboard ? 'Hide keyboard' : 'Show keyboard'}}</button>
 
 <ng-template #modalContent let-close="close">
   <div class="modal-header">

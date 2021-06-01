@@ -57,6 +57,12 @@ export class AgendaComponent {
 
   viewDate: Date = new Date();
 
+  keyboard = false;
+
+  public showKeyboard(){
+    this.keyboard = !this.keyboard;
+  }
+
   modalData: {
     action: string;
     event: CalendarEvent;
@@ -126,6 +132,7 @@ export class AgendaComponent {
     this.modalData = { event, action };
     this.modal.open(this.modalContent, { size: 'lg' });
   }
+  inputs: any = {};
 
   addEvent(): void {
     this.events = [
@@ -143,6 +150,8 @@ export class AgendaComponent {
         },
       },
     ];
+    this.inputs["key" + this.events.length] = "Nieuwe gebeurtenis"
+    console.log(this.inputs);
   }
 
   deleteEvent(eventToDelete: CalendarEvent) {
@@ -161,10 +170,8 @@ export class AgendaComponent {
   keyboard3!: Keyboard;
 
   inputName = "1";
-  inputs = {
-    taak1: "1"
-  };
 
+  focussedInput: any;
 
   ngAfterViewInit() {
     this.keyboard3 = new Keyboard(".keyboard3",{
@@ -172,7 +179,7 @@ export class AgendaComponent {
       onKeyPress: (button: string) => this.onKeyPress(button),
       debug: true,
       inputName: this.inputName,
-      preventMouseDownDefault: true
+      preventMouseDownDefault: true,
     });
 
     this.keyboard3.replaceInput(this.inputs);
@@ -186,7 +193,6 @@ export class AgendaComponent {
     this.keyboard3.setOptions({
       inputName: event.target.id
     });
-    console.log(event);
   };
 
   setInputCaretPosition = (elem: any, pos: number) => {
@@ -197,22 +203,21 @@ export class AgendaComponent {
   };
 
   onChange = (input: string) => {
-    this.value = input;
+    this.inputs[this.inputName] = input;
     console.log("Input changed", input);
-
     let caretPosition = this.keyboard3.caretPosition;
-
+    this.focussedInput = document.querySelector(`#${this.inputName}`)
     if (caretPosition !== null)
       this.setInputCaretPosition(
         document.querySelector(`#${this.inputName}`),
         caretPosition
       );
+    this.focussedInput.value = input;
   };
 
 
   onKeyPress = (button: string) => {
     console.log("Button pressed", button);
-
     /**
      * If you want to handle the shift and caps lock buttons
      */
