@@ -1,13 +1,10 @@
+
+
 ul {
   text-align: center;
 }
 
-/* .simple-keyboard {
-  max-width: 850px;
-} */
-
 .hide-keyboard {
-  overflow: hidden;
-  height: 0;
+  display: none;
 }
 

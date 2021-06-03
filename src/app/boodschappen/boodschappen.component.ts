@@ -74,5 +74,7 @@ export class BoodschappenComponent implements OnInit {
       completed: false,
       editing: false
     });
+    this.keyboard.clearInput()
+    this.value = ""
   }
 }

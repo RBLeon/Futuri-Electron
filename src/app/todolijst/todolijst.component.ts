@@ -23,7 +23,8 @@ export class TodolijstComponent implements OnInit {
   ngAfterViewInit() {
     this.keyboard2 = new Keyboard(".keyboard2",{
       onChange: (input: string) => this.onChange(input),
-      onKeyPress: (button: string) => this.onKeyPress(button)
+      onKeyPress: (button: string) => this.onKeyPress(button),
+      theme: "hg-theme-default hg-layout-default "
     });
   }
 
@@ -74,5 +75,7 @@ export class TodolijstComponent implements OnInit {
       completed: false,
       editing: false
     })
+    this.keyboard2.clearInput()
+    this.value = ""
   }
 }
