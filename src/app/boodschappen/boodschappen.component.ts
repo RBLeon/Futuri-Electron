@@ -18,6 +18,8 @@ export class BoodschappenComponent implements OnInit {
   value = "";
   keyboard!: Keyboard;
 
+  showkeyboard = false
+
   ngAfterViewInit() {
     this.keyboard = new Keyboard({
       onChange: (input: string) => this.onChange(input),

@@ -99,6 +99,10 @@
   <button class="btn btn-primary float-right" (click)="addEvent()">
     Voeg nieuw evenement toe
   </button>
+  <button class="btn btn-dark" (click)="keyboard = !keyboard">
+    {{!keyboard ? 'Verberg toetsenbord' : 'Toon toetsenbord'}}
+  </button>
+
   <div class="clearfix"></div>
 </h3>
 
@@ -119,6 +123,7 @@
       <tr *ngFor="let event of events; let i = index" [attr.data-index]="i">
         <td>
           <input
+            id="key{{i + 1}}"
             type="text"
             class="form-control"
             [(ngModel)]="event.title"
@@ -138,7 +143,7 @@
         <td>
           <input
             type="color"
-            [(ngModel)]="event.color.secondary"
+            [(ngModel)]="event.color.secondary" 
             (change)="refresh.next()"
           />
         </td>
@@ -181,7 +186,7 @@
     </tbody>
   </table>
 </div>
-<div class="keyboard3"></div>
+<div [ngClass]="keyboard ? 'hide-keyboard' : ''" class="keyboard3"></div>
 
 <ng-template #modalContent let-close="close">
   <div class="modal-header">

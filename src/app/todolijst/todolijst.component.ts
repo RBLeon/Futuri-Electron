@@ -18,6 +18,8 @@ export class TodolijstComponent implements OnInit {
   value = "";
   keyboard2!: Keyboard;
 
+  keyboard = false;
+
   ngAfterViewInit() {
     this.keyboard2 = new Keyboard(".keyboard2",{
       onChange: (input: string) => this.onChange(input),

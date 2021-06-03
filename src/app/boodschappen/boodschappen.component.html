@@ -20,12 +20,13 @@
                   (keyup.enter)="addTodo()">
               </div>
               <div class="col-auto px-0 mx-0 mr-2">
-                  <button type="button" class="btn btn-primary" (click)="addTodo()">Voeg toe</button>
+                <button type="button" class="btn btn-primary" (click)="addTodo()">Voeg toe</button>
+                <button class="btn btn-dark" (click)="showkeyboard = !showkeyboard">{{!showkeyboard ? 'Verberg toetsenbord' : 'Toon toetsenbord'}}</button>
               </div>
           </div>
       </div>
   </div>
-  <div class="simple-keyboard"></div>
+  <div [ngClass]="showkeyboard ? 'hide-keyboard' : ''" class="simple-keyboard"></div>
   <div class="p-2 mx-4 border-black-25 border-bottom"></div>
 
   <!-- Todo list section -->
